@@ -16,9 +16,10 @@
 	<button>Add todo</button>
 </form>
 Completed items: {completed_items}
-
-{#each todos as todo (todo.id)}
-	<Todo {...todo} />
-{/each}
+<form action="?/toggle" method="post" use:enhance>
+	{#each todos as todo (todo.id)}
+		<Todo {...todo} />
+	{/each}
+</form>
 <!-- svelte-ignore a11y-distracting-elements -->
 <marquee>This is a veeeeeeery cool tag!</marquee>

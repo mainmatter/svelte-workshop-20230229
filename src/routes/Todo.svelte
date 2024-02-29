@@ -13,9 +13,10 @@
 	export let id;
 </script>
 
-<button class:completed on:click>
-	{content} - {completed}
+<button value={id} name="todo_id" class:completed on:click>
+	{content}
 </button>
+<a href="/todo/{id}">Edit</a>
 
 <style>
 	.completed {

@@ -20,5 +20,16 @@ export const actions = {
 			content: new_todo.toString()
 		});
 	},
-	async toggle() {}
+	async toggle({ request }) {
+		const data = await request.formData();
+		const todo_id = data.get('todo_id');
+		if (!todo_id) {
+			return fail(400);
+		}
+		const todo = todos.find((todo) => todo.id === todo_id.toString());
+		if (!todo) {
+			return fail(500, { message: 'No todo found' });
+		}
+		todo.completed = !todo.completed;
+	}
 };
